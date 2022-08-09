@@ -5,9 +5,9 @@ val logback_version: String by project
 
 plugins {
     `java-library`
+    `maven-publish`
     kotlin("jvm") version "1.7.10"
     id("org.jetbrains.kotlin.plugin.serialization") version "1.7.10"
-    id("maven-publish")
 }
 
 group = "cz.majksa.mailu"
@@ -16,6 +16,21 @@ version = "0.0.1"
 repositories {
     mavenCentral()
 }
+
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
+    }
+}
+
+
 
 dependencies {
     implementation("com.squareup.retrofit2:retrofit:$retrofit_version")

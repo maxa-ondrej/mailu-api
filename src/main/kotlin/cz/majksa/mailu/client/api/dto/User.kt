@@ -31,6 +31,8 @@ data class ChangeUserPassword(
     val password: String
 )
 
+data class SetAllocated(val allocated: Long)
+
 data class Storage(
     val allocated: Long,
     val used: Long,

@@ -64,6 +64,14 @@ interface Client {
         @Body body: RenameBody
     ): Call<SingleResult<String>>
 
+    @POST("domain/{domain}/user/{user}/storage")
+    fun allocateUserStorage(
+        @Header("Authorization") authorization: String,
+        @Path("domain") domain: String,
+        @Path("user") user: String,
+        @Body body: SetAllocated
+    ): Call<SingleResult<Long>>
+
     @POST("domain/{domain}/user/{user}/password")
     fun changePassword(
         @Header("Authorization") authorization: String,

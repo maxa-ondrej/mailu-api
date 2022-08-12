@@ -38,6 +38,11 @@ class User(private val api: Mailu, dto: UserDto) {
             Alias(api, this)
         }
 
+    fun setAllocatedStorage(storage: Long) =
+        api.client.allocateUserStorage(api.authorization, domainName, this.name, SetAllocated(storage)).handle {
+            data
+        }
+
     fun changePassword(password: String) =
         api.client.changePassword(api.authorization, domainName, this.name, ChangeUserPassword(password)).handle {
             data

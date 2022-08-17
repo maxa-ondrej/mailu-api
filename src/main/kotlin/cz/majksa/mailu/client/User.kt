@@ -3,7 +3,7 @@ package cz.majksa.mailu.client
 import cz.majksa.mailu.client.api.dto.*
 
 class User(private val api: Mailu, dto: UserDto) {
-    var name = dto.email
+    var name = dto.name
         private set
     val email = dto.email
     val domainName = dto.domain
